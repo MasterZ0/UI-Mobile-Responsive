@@ -1,0 +1,19 @@
+{
+    "name": "TritanTest.UI",
+    "rootNamespace": "TritanTest.UI",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:063831170dfb2c948b0cfbc5e30cd7f0",
+        "GUID:c3d9d023068db894689a1e1a6d4cfe81"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

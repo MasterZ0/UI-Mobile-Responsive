@@ -1,0 +1,17 @@
+{
+    "name": "TritanTest.Player",
+    "rootNamespace": "",
+    "references": [
+        "GUID:063831170dfb2c948b0cfbc5e30cd7f0",
+        "GUID:c3d9d023068db894689a1e1a6d4cfe81"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
