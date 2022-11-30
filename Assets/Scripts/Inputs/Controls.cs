@@ -48,6 +48,15 @@ namespace TritanTest.Inputs
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""MouseDelta"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""aa4e4d1b-3c2b-4be8-8843-a66539afbabc"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Tap"",
                     ""type"": ""Button"",
                     ""id"": ""2a248c08-1dfb-4609-bf25-e53c2d17c5af"",
@@ -108,6 +117,17 @@ namespace TritanTest.Inputs
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PrimaryPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fd52e58-748f-493e-80cf-ad174c816952"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -541,6 +561,7 @@ namespace TritanTest.Inputs
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_LeftClick = m_Player.FindAction("LeftClick", throwIfNotFound: true);
             m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
+            m_Player_MouseDelta = m_Player.FindAction("MouseDelta", throwIfNotFound: true);
             m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
             m_Player_PrimaryPosition = m_Player.FindAction("PrimaryPosition", throwIfNotFound: true);
             // UI
@@ -614,6 +635,7 @@ namespace TritanTest.Inputs
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_LeftClick;
         private readonly InputAction m_Player_MousePosition;
+        private readonly InputAction m_Player_MouseDelta;
         private readonly InputAction m_Player_Tap;
         private readonly InputAction m_Player_PrimaryPosition;
         public struct PlayerActions
@@ -622,6 +644,7 @@ namespace TritanTest.Inputs
             public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @LeftClick => m_Wrapper.m_Player_LeftClick;
             public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
+            public InputAction @MouseDelta => m_Wrapper.m_Player_MouseDelta;
             public InputAction @Tap => m_Wrapper.m_Player_Tap;
             public InputAction @PrimaryPosition => m_Wrapper.m_Player_PrimaryPosition;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -639,6 +662,9 @@ namespace TritanTest.Inputs
                     @MousePosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                     @MousePosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                     @MousePosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
+                    @MouseDelta.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseDelta;
+                    @MouseDelta.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseDelta;
+                    @MouseDelta.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseDelta;
                     @Tap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
                     @Tap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
                     @Tap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
@@ -655,6 +681,9 @@ namespace TritanTest.Inputs
                     @MousePosition.started += instance.OnMousePosition;
                     @MousePosition.performed += instance.OnMousePosition;
                     @MousePosition.canceled += instance.OnMousePosition;
+                    @MouseDelta.started += instance.OnMouseDelta;
+                    @MouseDelta.performed += instance.OnMouseDelta;
+                    @MouseDelta.canceled += instance.OnMouseDelta;
                     @Tap.started += instance.OnTap;
                     @Tap.performed += instance.OnTap;
                     @Tap.canceled += instance.OnTap;
@@ -758,6 +787,7 @@ namespace TritanTest.Inputs
         {
             void OnLeftClick(InputAction.CallbackContext context);
             void OnMousePosition(InputAction.CallbackContext context);
+            void OnMouseDelta(InputAction.CallbackContext context);
             void OnTap(InputAction.CallbackContext context);
             void OnPrimaryPosition(InputAction.CallbackContext context);
         }

@@ -1,0 +1,22 @@
+{
+    "name": "TritanTest.Gameplay",
+    "rootNamespace": "TritanTest.Gameplay",
+    "references": [
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:df55f17f78f75a643aff19957150ab7f",
+        "GUID:66c5fa39ca32f444fbe0610c8c2aed59",
+        "GUID:35334e9fce2041042a58f9101a81d24c",
+        "GUID:063831170dfb2c948b0cfbc5e30cd7f0",
+        "GUID:c3d9d023068db894689a1e1a6d4cfe81"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

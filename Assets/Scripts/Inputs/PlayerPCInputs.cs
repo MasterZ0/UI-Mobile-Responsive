@@ -5,15 +5,22 @@ namespace TritanTest.Inputs
 {
     public class PlayerPCInputs : PlayerInputs 
     {
+        private bool leftPressed;
+
         public PlayerPCInputs(bool enabled = true) : base(enabled) 
         {
-            controls.Player.LeftClick.started += LeftClickStart;
+            controls.Player.MousePosition.performed += OnMoveMouse;
+            controls.Player.LeftClick.started += ctx => leftPressed = true;
+            controls.Player.LeftClick.canceled += ctx => leftPressed = false;
         }
 
-        private void LeftClickStart(InputAction.CallbackContext ctx) 
+        private void OnMoveMouse(InputAction.CallbackContext ctx) 
         {
-            Vector2 position = controls.Player.MousePosition.ReadValue<Vector2>();
-            InvokeMove(position);
+            if (leftPressed)
+            {
+                Vector2 mousePosition = controls.Player.MousePosition.ReadValue<Vector2>();
+                InvokeMove(mousePosition);
+            }
         }
     }
 }

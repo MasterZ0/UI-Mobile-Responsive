@@ -1,0 +1,19 @@
+{
+    "name": "TritanTest.Editor",
+    "rootNamespace": "TritanTest.Editor",
+    "references": [
+        "GUID:35334e9fce2041042a58f9101a81d24c",
+        "GUID:c3d9d023068db894689a1e1a6d4cfe81"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

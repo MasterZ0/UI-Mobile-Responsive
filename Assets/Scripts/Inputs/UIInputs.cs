@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TritanTest
+namespace TritanTest.Inputs
 {
     public class UIInputs : BaseInput
     {

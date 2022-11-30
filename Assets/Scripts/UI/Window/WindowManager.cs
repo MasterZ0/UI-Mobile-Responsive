@@ -56,7 +56,6 @@ namespace TritanTest.UI.Window
 
             if (WindowsHistory.TryPop(out SaveWindow last))
             {
-                OnOpenFirstWindow();
                 last.ReturnToWindow();
                 CurrentWindow = last.Window;
             }

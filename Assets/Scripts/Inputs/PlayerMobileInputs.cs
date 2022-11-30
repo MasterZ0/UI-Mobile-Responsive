@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace TritanTest.Inputs
@@ -8,12 +7,12 @@ namespace TritanTest.Inputs
     {
         public PlayerMobileInputs(bool enabled = true) : base(enabled)
         {
-            controls.Player.Tap.performed += Tap;
+            controls.Player.PrimaryPosition.performed += OnMoveFinger;
         }
 
-        private void Tap(InputAction.CallbackContext ctx)
+        private void OnMoveFinger(InputAction.CallbackContext ctx)
         {
-            Vector2 position = controls.Player.PrimaryPosition.ReadValue<Vector2>();
+            Vector2 position = ctx.ReadValue<Vector2>();
             InvokeMove(position);
         }
     }
