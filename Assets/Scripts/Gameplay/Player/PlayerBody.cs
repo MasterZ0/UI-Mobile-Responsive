@@ -62,8 +62,8 @@ namespace TritanTest.Gameplay.Player
             Ray ray = MainCamera.Camera.ScreenPointToRay(screenPosition);
             if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, interactableLayer) && hit.point.y == 0)
             {
-                Transform.LookAtY(targetPosition);
                 targetPosition = hit.point;
+                Transform.LookAtY(targetPosition);
 
                 goVFX.position = targetPosition;
                 goVFX.gameObject.SetActive(true);
