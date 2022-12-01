@@ -1,0 +1,18 @@
+{
+    "name": "TritanTest.ApplicationManager",
+    "rootNamespace": "TritanTest.ApplicationManager",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:35334e9fce2041042a58f9101a81d24c",
+        "GUID:c3d9d023068db894689a1e1a6d4cfe81"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -3,9 +3,9 @@ using TritanTest.Shared;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace TritanTest.Gameplay
+namespace TritanTest.ApplicationManager
 {
-    public class ApplicationManager : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
         [SerializeField] private GameSettings gameSettings;
 
