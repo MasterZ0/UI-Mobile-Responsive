@@ -64,6 +64,7 @@ namespace TritanTest.UI.AppOptions
                 videoData = new VideoOptionsData();
 
                 videoData.graphicsQuality = QualitySettings.GetQualityLevel();
+                videoData.orientation = Screen.orientation;
 
                 //PersistenceManager.SaveGlobalFile(videoData);
             }
@@ -87,6 +88,7 @@ namespace TritanTest.UI.AppOptions
             QualitySettings.SetQualityLevel(videoData.graphicsQuality);
             QualitySettings.shadows = videoData.shadows ? ShadowQuality.All : ShadowQuality.Disable;
             QualitySettings.antiAliasing = videoData.antiAliasing;
+            Screen.orientation = videoData.orientation;
         }
 
         #region Set Option

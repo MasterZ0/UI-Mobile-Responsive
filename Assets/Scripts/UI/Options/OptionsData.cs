@@ -6,7 +6,7 @@ namespace TritanTest.UI.AppOptions
     [Serializable]
     public class VideoOptionsData
     {
-        public ScreenOrientation orientation = ScreenOrientation.LandscapeLeft;
+        public ScreenOrientation orientation;
         public int graphicsQuality;
         public bool shadows = true;
         public int antiAliasing = 1;
