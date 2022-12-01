@@ -21,7 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  mobileSimulator: 1
+  mobileSimulator: 0
   distanceToCollectItem: 1
   speedBase: 5
   speedIncrement: 1
