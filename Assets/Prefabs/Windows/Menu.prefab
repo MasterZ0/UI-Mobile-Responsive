@@ -103,7 +103,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1634197278579454896, guid: 13eaa42e7d3e6c245a1264c7d1282129, type: 3}
       propertyPath: m_text
-      value: Options (Fake)
+      value: Options
       objectReference: {fileID: 0}
     - target: {fileID: 6336353043385393422, guid: 13eaa42e7d3e6c245a1264c7d1282129, type: 3}
       propertyPath: m_Name

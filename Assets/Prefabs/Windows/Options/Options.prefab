@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058173415253880981, guid: 2fe2c3cfb1227f94ab78d62b98a8aee7, type: 3}
       propertyPath: m_text
-      value: Language
+      value: Language (Fake)
       objectReference: {fileID: 0}
     - target: {fileID: 8058173415253880981, guid: 2fe2c3cfb1227f94ab78d62b98a8aee7, type: 3}
       propertyPath: m_fontColor32.rgba
