@@ -8,7 +8,11 @@ namespace TritanTest.UI
     [ExecuteAlways]
     public class SafeAreaFilter : MonoBehaviour
     {
-        private void Update()
+        private void Awake() => ApplyFilter();
+
+        private void Update() => ApplyFilter(); // TODO: Improve
+
+        private void ApplyFilter()
         {
             RectTransform rectTransform = (RectTransform)transform;
             Rect safeArea = Screen.safeArea;

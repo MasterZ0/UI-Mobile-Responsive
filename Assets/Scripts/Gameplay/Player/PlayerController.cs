@@ -18,7 +18,7 @@ namespace TritanTest.Gameplay.Player
 
         private void Awake()
         {
-            Inputs = Application.isMobilePlatform ? new PlayerMobileInputs() : new PlayerPCInputs();
+            Inputs = Application.isMobilePlatform || Settings.MobileSimulator ? new PlayerMobileInputs() : new PlayerPCInputs();
 
             ui.Init(this);
             body.Init(this);
@@ -32,11 +32,6 @@ namespace TritanTest.Gameplay.Player
         private void FixedUpdate()
         {
             body.Update();
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-           
         }
     }
 }

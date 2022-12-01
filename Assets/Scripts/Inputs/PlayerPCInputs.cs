@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace TritanTest.Inputs 
@@ -18,6 +19,9 @@ namespace TritanTest.Inputs
         {
             if (leftPressed)
             {
+                if (EventSystem.current.IsPointerOverGameObject())
+                    return;
+
                 Vector2 mousePosition = ctx.ReadValue<Vector2>();
                 InvokeMove(mousePosition);
             }
@@ -26,6 +30,9 @@ namespace TritanTest.Inputs
         private void OnLeftClickPressed(InputAction.CallbackContext ctx)
         {
             leftPressed = true;
+
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
 
             Vector2 mousePosition = controls.Player.MousePosition.ReadValue<Vector2>();
             InvokeMove(mousePosition);

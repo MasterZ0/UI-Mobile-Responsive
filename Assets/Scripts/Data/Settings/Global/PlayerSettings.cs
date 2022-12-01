@@ -8,6 +8,7 @@ namespace TritanTest.Data
     public class PlayerSettings : SerializedScriptableObject
     {
         [Title("Player Settings")]
+        [SerializeField] private bool mobileSimulator;
         [SerializeField] private float distanceToCollectItem = 1f;
         [SerializeField] private float speedBase = 5f;
         [SerializeField] private float speedIncrement = 1f;
@@ -21,5 +22,6 @@ namespace TritanTest.Data
         public float SpeedBase => speedBase;
         public float SpeedIncrement => speedIncrement;
         public Vector2 AnimationSpeedMultiplier => animationSpeedMultiplier;
+        public bool MobileSimulator => mobileSimulator;
     }
 }

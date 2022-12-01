@@ -75,9 +75,6 @@ namespace TritanTest.Gameplay.Player
 
         private void OnMove(Vector2 screenPosition)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
-
             collectable = null; // Clean last interaction
 
             Ray ray = MainCamera.Camera.ScreenPointToRay(screenPosition);

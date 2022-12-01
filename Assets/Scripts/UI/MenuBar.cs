@@ -1,3 +1,4 @@
+using System;
 using TritanTest.Data;
 using UnityEngine;
 
@@ -8,11 +9,11 @@ namespace TritanTest.UI
     {
         private RectTransform rectTransform;
 
+        private Func<Vector2> getNextPosition;
         private Vector2 startPosition;
-        private Vector2 nextPosition;
 
-        private bool open;
         private bool moving;
+        private bool open;
 
         private Vector2 UpPosition => startPosition - new Vector2(0f, rectTransform.rect.size.y);
         private Vector2 DownPosition => startPosition + new Vector2(0f, rectTransform.rect.size.y);
@@ -23,13 +24,19 @@ namespace TritanTest.UI
         {
             rectTransform = transform as RectTransform;
 
+            getNextPosition = () => startPosition;
             startPosition = rectTransform.anchoredPosition;
         }
 
         private void FixedUpdate()
         {
+            Vector2 nextPosition = getNextPosition();
+
             if (!moving)
+            {
+                rectTransform.anchoredPosition = nextPosition;
                 return;
+            }
 
             rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, nextPosition, GameSettings.General.MenuBarSpeed * Time.fixedDeltaTime);
 
@@ -45,7 +52,7 @@ namespace TritanTest.UI
             moving = true;
             open = !open;
 
-            nextPosition = open ? UpPosition : startPosition;
+            getNextPosition = open ? (() => UpPosition) : (() => startPosition);
         }
 
         public void OnToggleDown()
@@ -53,7 +60,7 @@ namespace TritanTest.UI
             moving = true;
             open = !open;
 
-            nextPosition = open ? DownPosition : startPosition;
+            getNextPosition = open ? (() => DownPosition) : (() => startPosition);
         }
     }
 }
