@@ -1,6 +1,6 @@
 # Tritan Test
 
-Tristan Test is a mobile project for the purpose of assessing basic movement and UI skills for mobile games with a focus on Android.
+Tristan Test is a mobile project with a focus on Android for the purpose of assessing basic movement and UI skills.
 
 - [Download Game](https://drive.google.com/file/d/1ZwK6cC8Fs_-yb0-yITz3isGEPBTLZ5ly/view?usp=share_link)
 <!--
