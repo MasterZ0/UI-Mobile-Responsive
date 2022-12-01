@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using System;
+using TritanTest.Data;
 using TritanTest.Shared.ExtensionMethods;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +11,7 @@ namespace TritanTest.Gameplay.Player
     public class PlayerBody
     {
         [Header("Body")]
-        [SerializeField] private Transform goVFX;
+        [SerializeField] private GameObject movementPoint;
         [SerializeField] private LayerMask interactableLayer;
 
         [Header("Animations")]
@@ -22,17 +23,26 @@ namespace TritanTest.Gameplay.Player
         [SerializeField] private string runState = "Run";
         [SerializeField] private string speedMultiplierParameter = "SpeedMultiplier";
 
+        private PlayerSettings Settings => Controller.Settings;
+
         private Vector3 targetPosition;
-        private bool moving;
+        private ICollectable collectable;
+
         private float moveSpeed;
+        private float distanceToStop;
+        private bool moving;
 
         private PlayerController Controller { get; set; }
         private Transform Transform => Controller.transform;
+
+        private const float Threshold = 0.01f;
 
         internal void Init(PlayerController playerController)
         {
             Controller = playerController;
             targetPosition = Transform.position;
+            movementPoint.transform.SetParent(null);
+            movementPoint.SetActive(false);
 
             Controller.Inputs.OnMove += OnMove;
         }
@@ -44,13 +54,22 @@ namespace TritanTest.Gameplay.Player
 
             // Move
             Vector3 newPosition = Vector3.MoveTowards(Transform.position, targetPosition, moveSpeed * Time.fixedDeltaTime);
-            Transform.position = newPosition; 
+            Transform.position = newPosition;
 
             // Stop
-            if (Vector3.Distance(newPosition, targetPosition) <= 0.01f)
+            if (Vector3.Distance(newPosition, targetPosition) <= distanceToStop)
             {
+                movementPoint.SetActive(false);
                 animator.CrossFade(idleState, animationTransition);
                 moving = false;
+
+                if (collectable != null)
+                {
+                    ItemData item = collectable.Collect(Controller.Center);
+                    Controller.UI.AddItem(item); // In a more complex program, this would be added into an inventory class.
+
+                    collectable = null;
+                }
             }
         }
 
@@ -59,14 +78,28 @@ namespace TritanTest.Gameplay.Player
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            Ray ray = MainCamera.Camera.ScreenPointToRay(screenPosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, interactableLayer) && hit.point.y == 0)
-            {
-                targetPosition = hit.point;
-                Transform.LookAtY(targetPosition);
+            collectable = null; // Clean last interaction
 
-                goVFX.position = targetPosition;
-                goVFX.gameObject.SetActive(true);
+            Ray ray = MainCamera.Camera.ScreenPointToRay(screenPosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, interactableLayer))
+            {
+                if (hit.rigidbody && hit.rigidbody.TryGetComponent(out collectable))
+                {
+                    targetPosition = collectable.Pivot.position;
+                    distanceToStop = Settings.DistanceToCollectItem;
+                }
+                else if (hit.point.y == 0)
+                {
+                    targetPosition = hit.point;
+                    distanceToStop = Threshold;
+                }
+                else
+                    return;
+
+                movementPoint.transform.position = targetPosition;
+                movementPoint.SetActive(true);
+
+                Transform.LookAtY(targetPosition);
 
                 if (!moving)
                 {

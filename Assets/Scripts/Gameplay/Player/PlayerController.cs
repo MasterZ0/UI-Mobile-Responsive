@@ -6,11 +6,13 @@ namespace TritanTest.Gameplay.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private Transform vfxPoint;
+        [SerializeField] private Transform center;
         [SerializeField] private PlayerUI ui;
         [SerializeField] private PlayerBody body;
 
+        public Transform Center => center;
         public PlayerBody Body => body;
+        public PlayerUI UI => ui;
         public PlayerInputs Inputs { get; private set; }
         public PlayerSettings Settings => GameSettings.Player;
 
@@ -34,11 +36,7 @@ namespace TritanTest.Gameplay.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent(out ICollectable collectable))
-            {
-                ItemData item = collectable.Collect(vfxPoint);
-                ui.AddItem(item); // In a more complex program, this would be added into an inventory class.
-            }
+           
         }
     }
 }

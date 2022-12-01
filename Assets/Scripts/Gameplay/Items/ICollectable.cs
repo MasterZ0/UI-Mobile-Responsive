@@ -3,12 +3,9 @@ using UnityEngine;
 
 namespace TritanTest.Gameplay
 {
-
-    /// <summary>
-    /// Note to developers: Please describe what this class does.
-    /// </summary>
-    public interface ICollectable 
+    public interface ICollectable
     {
+        Transform Pivot { get; }
         ItemData Collect(Transform fxParent);
     }
 }

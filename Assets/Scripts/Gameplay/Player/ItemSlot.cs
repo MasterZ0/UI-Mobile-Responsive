@@ -22,7 +22,7 @@ namespace TritanTest.Gameplay.Player
         public void Increment()
         {
             currentAmount++;
-            countTmp.text = currentAmount.ToString();
+            countTmp.text = $"x{currentAmount}";
         }
     }
 }

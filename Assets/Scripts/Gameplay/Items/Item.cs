@@ -13,6 +13,8 @@ namespace TritanTest.Gameplay
         [Header("Item")]
         [SerializeField] private SpriteRenderer spriteRenderer;
 
+        public Transform Pivot => transform;
+
         private ItemData item;
 
         public void SetItem(ItemData itemData)
